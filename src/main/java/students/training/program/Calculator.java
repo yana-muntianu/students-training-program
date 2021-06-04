@@ -8,9 +8,9 @@ public class Calculator {
 
     private int workingHours = 0;
     private int trainingHours = 0;
-    public String courseCompleteMessage = " ";
+    public String courseCompleteMessage;
 
-    public int countWorkingHoursSinceStartDate(Student student, String date) throws ParseException {
+    public void countWorkingHoursSinceStartDate(Student student, String date) throws ParseException {
         /*/
            Count how many days passed from the startDate and exclude weekends
         */
@@ -46,10 +46,9 @@ public class Calculator {
             workingHours = numberOfDays * 8;
         }
 
-        return workingHours;
     }
 
-    public int countFullNumberOfTrainingHours(Student student){
+    public void countFullNumberOfTrainingHours(Student student){
 
         Integer[] courseHours = null;
 
@@ -59,10 +58,9 @@ public class Calculator {
         for (int i = 0; i< Objects.requireNonNull(courseHours).length; i++){
             trainingHours = trainingHours +courseHours[i];
         }
-        return trainingHours;
     }
 
-    public String countTimeDifferenceWorkingAndCourseHours(){
+    public void countTimeDifferenceWorkingAndCourseHours(){
         int hoursDifference = workingHours - trainingHours;
 
         if((hoursDifference)>=0) {
@@ -88,7 +86,6 @@ public class Calculator {
                 courseCompleteMessage = "Training is not finished. " + days + " d " + hours + " hours are left until the end.";
             }
         }
-        return courseCompleteMessage;
     }
 
 }

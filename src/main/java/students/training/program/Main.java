@@ -1,60 +1,42 @@
 package students.training.program;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
 
-    public static void main (String[] args) throws ParseException {
+    public static void main (String[] args) throws Exception {
 
-        String endDate = "1 May 2021 - Thursday";
-        Student student1 = createFirstStudent();
-        Student student2 = createSecondStudent();
+        Student student1 = new Student("Ivanov Ivan", "Java SE", Constants.COURSE_START_DATE,
+                generateCourseList());
+        Student student2 = new Student("Sidorov Ivan", "AQE", Constants.COURSE_START_DATE,
+                generateCourseList());
         ReportsGenerator reportsGenerator = new ReportsGenerator();
 
-        reportsGenerator.generateStudentShortReport(student1, endDate);
-        reportsGenerator.generateStudentFullReport(student1, endDate);
+        reportsGenerator.generateStudentReport(student1, 0);
+        reportsGenerator.generateStudentReport(student1, 1);
 
-        reportsGenerator.generateStudentShortReport(student2, endDate);
-        reportsGenerator.generateStudentFullReport(student2, endDate);
+        reportsGenerator.generateStudentReport(student2);
+        reportsGenerator.generateStudentReport(student2, 1);
     }
 
-    public static Student createFirstStudent(){
-
-        String studentName = "Ivanov Ivan";
-        String curriculum = "Java SE";
-        String courseStartDate = "1 June 2021 - Tuesday";
+    public static List<HashMap<String, Integer>> generateCourseList(){
 
         HashMap<String, Integer> course = new HashMap<>();
         List<HashMap<String, Integer>> listOfCourses = new ArrayList<>();
+        Random rand = new Random();
 
-        course.put("Java", 16);
-        course.put("JDBC", 24);
-        course.put("Spring", 16);
+        int upperbound = 20;
 
+        course.put("Test design", rand.nextInt(upperbound));
+        course.put("Page Object", rand.nextInt(upperbound));
+        course.put("Selenium", rand.nextInt(upperbound));
         listOfCourses.add(course);
 
-        return new Student(studentName,curriculum,courseStartDate,listOfCourses);
+        return listOfCourses;
     }
 
-    public static Student createSecondStudent(){
-
-        String studentName = "Sidorov Ivan";
-        String curriculum = "AQE";
-        String courseStartDate = "1 June 2021 - Tuesday";
-
-        HashMap<String, Integer> course = new HashMap<>();
-        List<HashMap<String, Integer>> listOfCourses = new ArrayList<>();
-
-        course.put("Test design", 10);
-        course.put("Page Object", 16);
-        course.put("Selenium", 16);
-
-        listOfCourses.add(course);
-
-        return new Student(studentName,curriculum,courseStartDate,listOfCourses);
-    }
 
 }
