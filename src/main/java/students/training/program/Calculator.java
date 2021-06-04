@@ -1,11 +1,9 @@
 package students.training.program;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 public class Calculator {
 
@@ -50,8 +48,7 @@ public class Calculator {
         return format.parse(dateString);
     }
 
-    public String countTimeSinceStartDate(Student student) throws ParseException {
-
+    public String countWorkingHoursSinceStartDate(Student student) throws ParseException {
         /*/
            Count how many days passed from the startDate and exclude weekends
         */
@@ -72,20 +69,39 @@ public class Calculator {
             }
             /*/
                 Count how much time is it in current day. Then count how much working hours passed since 10AM and display
-                full days from the startDate and whole hours
+                full days from the startDate and whole hours / whole working hours
              */
             int hours = LocalDateTime.now().getHour();
-            if(hours<=10){
+            if(hours<10){
                 numberOfDays = numberOfDays - 1;
                 System.out.println(numberOfDays + " full working days");
-            }else if(10<hours && hours <= 18){
-                    System.out.println(numberOfDays + " full working days and " + (hours - 10) + " hours");
+                System.out.println((numberOfDays * 8) + " working hours");
+
+            }else if(10<=hours && hours <= 18){
+                System.out.println(numberOfDays + " full working days and " + (hours - 10) + " hours");
+                System.out.println(((numberOfDays * 8)+hours-10) + " working hours");
+
             }else{
                 System.out.println(numberOfDays + " full working days");
+                System.out.println((numberOfDays * 8) + " working hours");
             }
 
         }
         return "";
+    }
+
+    public int countFullNumberOfTrainingHours(Student student){
+
+        int numberOfTrainingHours = 0;
+        Integer[] courseHours = null;
+
+        for (HashMap<String, Integer> course: student.getCourseList()) {
+            courseHours = course.values().toArray(new Integer[0]);
+        }
+        for (int i = 0; i< Objects.requireNonNull(courseHours).length; i++){
+            numberOfTrainingHours = numberOfTrainingHours+courseHours[i];
+        }
+        return numberOfTrainingHours;
     }
 
 }

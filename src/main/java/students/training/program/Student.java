@@ -9,19 +9,19 @@ public class Student {
     private final String courseStartDate;
     private final List<HashMap <String, Integer>> courseList;
 
-    //TODO: implement list of maps as a param
-
-
     public Student(String studentName, String curriculum, String courseStartDate, List<HashMap<String,Integer>> courseList){
 
         this.studentName = studentName;
         this.curriculum = curriculum;
         this.courseStartDate = courseStartDate;
-        //TODO: here ->
         this.courseList = courseList;
     }
     public String getCourseStartDate() {
         return courseStartDate;
+    }
+
+    public List<HashMap<String, Integer>> getCourseList() {
+        return courseList;
     }
 
     @Override

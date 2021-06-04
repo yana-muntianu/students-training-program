@@ -29,7 +29,9 @@ public class Main {
 
         Calculator calculator = new Calculator();
         Student student = createNewStudent();
-        calculator.countTimeSinceStartDate(student);
+//        calculator.countWorkingHoursSinceStartDate(student);
+
+        calculator.countFullNumberOfTrainingHours(student);
 
     }
 
