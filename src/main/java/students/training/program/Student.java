@@ -16,6 +16,7 @@ public class Student {
         this.courseStartDate = courseStartDate;
         this.courseList = courseList;
     }
+
     public String getCourseStartDate() {
         return courseStartDate;
     }
@@ -24,22 +25,27 @@ public class Student {
         return courseList;
     }
 
-    @Override
-    public String toString(){
-        String concatination = "";
+    public String getStudentName() {
+        return studentName;
+    }
 
-        for (HashMap hmap:courseList) {
+    public String getCurriculum() {
+        return curriculum;
+    }
 
-            Set set = hmap.entrySet();
+    public String returnListOfCourses(){
+        StringBuilder concatination = new StringBuilder();
+
+        for (HashMap<String, Integer> course : courseList) {
+
+            Set set = course.entrySet();
             Iterator iterator = set.iterator();
             while (iterator.hasNext()) {
                 Map.Entry mentry = (Map.Entry) iterator.next();
 
-                concatination = concatination + "\n" + mentry.toString().replace('=', ' ');
+                concatination.append("\n").append(mentry.toString().replace('=', '-')).append(" h");
             }
         }
-        return "Student: " + studentName + "\nCurriculum: " + curriculum +
-                "\nStart Date: " + courseStartDate + "\nCourse: "
-                + concatination;
+        return concatination.toString();
     }
 }
