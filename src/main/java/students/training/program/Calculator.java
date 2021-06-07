@@ -30,10 +30,10 @@ public class Calculator {
             }
             startDate.add(Calendar.DATE, 1);
         }
-            /*/
-                Count how much time is it in current day. Then count how much working hours passed since 10AM and display
-                full days from the startDate and whole hours / whole working hours
-             */
+        /*/
+            Count how much time is it in current day. Then count how much working hours passed since 10AM and display
+            full days from the startDate and whole hours / whole working hours
+        */
         int hours = LocalDateTime.now().getHour();
 
         if(hours<10){
@@ -45,7 +45,6 @@ public class Calculator {
         }else{
             workingHours = numberOfDays * 8;
         }
-
     }
 
     public void countFullNumberOfTrainingHours(Student student){

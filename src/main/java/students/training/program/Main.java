@@ -13,13 +13,13 @@ public class Main {
                 generateCourseList());
         Student student2 = new Student("Sidorov Ivan", "AQE", Constants.COURSE_START_DATE,
                 generateCourseList());
-        ReportsGenerator reportsGenerator = new ReportsGenerator();
+        ReportGenerator reportGenerator = new ReportGenerator();
 
-        reportsGenerator.generateStudentReport(student1, 0);
-        reportsGenerator.generateStudentReport(student1, 1);
+        reportGenerator.generateStudentReport(student1, 0);
+        reportGenerator.generateStudentReport(student1, 1);
 
-        reportsGenerator.generateStudentReport(student2);
-        reportsGenerator.generateStudentReport(student2, 1);
+        reportGenerator.generateStudentReport(student2);
+        reportGenerator.generateStudentReport(student2, 1);
     }
 
     public static List<HashMap<String, Integer>> generateCourseList(){

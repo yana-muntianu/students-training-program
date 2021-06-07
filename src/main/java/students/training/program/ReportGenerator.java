@@ -3,9 +3,9 @@ package students.training.program;
 import java.text.ParseException;
 
 
-public class ReportsGenerator {
+public class ReportGenerator {
 
-    public void generateStudentReport(Student student, Integer reportType) throws Exception {
+    public String generateStudentReport(Student student, Integer reportType) throws Exception {
         String report;
 
         Calculator calculator = new Calculator();
@@ -24,11 +24,12 @@ public class ReportsGenerator {
         }else{
             throw new Exception("Unexpected report type");
         }
-        System.out.println(report);
+        return report;
     }
 
-    public void generateStudentReport(Student student) throws Exception {
+    public String generateStudentReport(Student student) throws Exception {
         generateStudentReport(student, 0);
+        return null;
     }
 
 }
